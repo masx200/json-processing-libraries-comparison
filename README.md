@@ -46,6 +46,7 @@ pnpm preview
 ## 开发服务器配置
 
 开发服务器配置了API代理，在`vite.config.js`中：
+
 - `/api` -> `http://localhost:5000`
 - `/static` -> `http://localhost:5000`
 
