@@ -1,0 +1,24 @@
+{
+  "name": "JSON处理库深度对比研究报告",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.16",
+    "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.16",
+    "@types/node": "^24.9.2",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.12.2",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.16"
+  }
+}

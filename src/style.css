@@ -1,0 +1,46 @@
+/* 你的 main.css 或 index.css */
+@import "tailwindcss";
+
+/* 
+  不再需要这些指令：
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+*/
+
+.nav-card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer;
+}
+
+.nav-icon {
+  @apply w-16 h-16 mx-auto mb-2 object-contain;
+}
+
+.nav-title {
+  @apply text-sm font-medium text-gray-800 text-center truncate;
+}
+
+.modal-overlay {
+  /* 修改这里：使用新的不透明度修饰符 */
+  @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
+}
+
+.modal-overlay.hidden {
+  @apply hidden;
+}
+
+.modal-content {
+  @apply bg-white rounded-lg p-6 w-full max-w-md;
+}
+
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.form-button {
+  @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors;
+}
+
+.form-button-secondary {
+  @apply px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors ml-2;
+}
