@@ -5,6 +5,7 @@
 ## 项目特点
 
 ### 博客主页 (index.html)
+
 - 🎨 现代化响应式设计，支持移动端和桌面端
 - 📱 响应式导航栏，移动端汉堡菜单
 - 🔍 实时搜索功能，支持标题、摘要、标签搜索
@@ -15,6 +16,7 @@
 - 🌟 平滑滚动和加载动画效果
 
 ### 研究报告页面
+
 - 📈 JSON处理库深度对比研究报告：stream-json vs large-json-reader-writor
 - 🤖 上下文压缩与编程智能体稳定性研究：KiloCode vs Claude Code
 - 📊 交互式图表和数据可视化
@@ -23,25 +25,30 @@
 ## 技术栈
 
 ### 前端框架与工具
+
 - **构建工具**: Vite 7.x - 快速的现代化构建工具
 - **开发语言**: 原生 JavaScript ES6+ (TypeScript Ready)
 - **模块系统**: ES Modules - 原生模块化支持
 
 ### 样式与UI
+
 - **CSS框架**: Tailwind CSS 4.x - 实用优先的CSS框架
 - **图标库**: Font Awesome 6.4.0 - 丰富的图标资源
 - **动画**: CSS3 Animations + JavaScript - 平滑的交互体验
 
 ### 数据与交互
+
 - **HTTP客户端**: Axios - 轻量级的HTTP请求库
 - **数据格式**: JSON + HTML - 多种数据源支持
 - **DOM操作**: 原生DOM API - 高性能的文档操作
 
 ### 图表与可视化
+
 - **图表库**: Chart.js (CDN) - 强大的数据可视化库
 - **图像处理**: Picsum Photos API - 随机图片占位符
 
 ### 开发工具
+
 - **包管理**: pnpm - 高效的包管理器
 - **代码质量**: ESLint + Prettier (可配置)
 - **调试工具**: Chrome DevTools + Source Maps
