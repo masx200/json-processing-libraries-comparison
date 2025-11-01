@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      "@masx200/vite-plugin-virtual-http-resolve":
+        specifier: ^1.0.1
+        version: 1.0.1(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))
       "@tailwindcss/postcss":
         specifier: ^4.1.16
         version: 4.1.16
@@ -28,6 +31,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.16
         version: 4.1.16
+      undici:
+        specifier: ^7.16.0
+        version: 7.16.0
     devDependencies:
       "@tailwindcss/vite":
         specifier: ^4.1.16
@@ -314,6 +320,14 @@ packages:
       {
         integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==,
       }
+
+  "@masx200/vite-plugin-virtual-http-resolve@1.0.1":
+    resolution:
+      {
+        integrity: sha512-pSTk8di490YYuayl95nvadccxCBlVs3vazhVfJW3f99tt8OrfyDOMr8LKeSkduguSG1ApckTcAkYYvMQFVDOWg==,
+      }
+    peerDependencies:
+      vite: ^4.0.0 || ^5.0.0
 
   "@rollup/rollup-android-arm-eabi@4.52.5":
     resolution:
@@ -837,6 +851,13 @@ packages:
         integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==,
       }
 
+  fs-extra@11.3.2:
+    resolution:
+      {
+        integrity: sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==,
+      }
+    engines: { node: ">=14.14" }
+
   fsevents@2.3.3:
     resolution:
       {
@@ -905,6 +926,12 @@ packages:
         integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==,
       }
     hasBin: true
+
+  jsonfile@6.2.0:
+    resolution:
+      {
+        integrity: sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==,
+      }
 
   lightningcss-android-arm64@1.30.2:
     resolution:
@@ -1145,6 +1172,20 @@ packages:
         integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==,
       }
 
+  undici@7.16.0:
+    resolution:
+      {
+        integrity: sha512-QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g==,
+      }
+    engines: { node: ">=20.18.1" }
+
+  universalify@2.0.1:
+    resolution:
+      {
+        integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==,
+      }
+    engines: { node: ">= 10.0.0" }
+
   update-browserslist-db@1.1.4:
     resolution:
       {
@@ -1298,6 +1339,14 @@ snapshots:
       "@jridgewell/sourcemap-codec": 1.5.5
 
   "@kurkle/color@0.3.4": {}
+
+  "@masx200/vite-plugin-virtual-http-resolve@1.0.1(vite@7.1.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2))":
+    dependencies:
+      axios: 1.12.2
+      fs-extra: 11.3.2
+      vite: 7.1.12(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)
+    transitivePeerDependencies:
+      - debug
 
   "@rollup/rollup-android-arm-eabi@4.52.5":
     optional: true
@@ -1571,6 +1620,12 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
+  fs-extra@11.3.2:
+    dependencies:
+      graceful-fs: 4.2.11
+      jsonfile: 6.2.0
+      universalify: 2.0.1
+
   fsevents@2.3.3:
     optional: true
 
@@ -1609,6 +1664,12 @@ snapshots:
       function-bind: 1.1.2
 
   jiti@2.6.1: {}
+
+  jsonfile@6.2.0:
+    dependencies:
+      universalify: 2.0.1
+    optionalDependencies:
+      graceful-fs: 4.2.11
 
   lightningcss-android-arm64@1.30.2:
     optional: true
@@ -1733,6 +1794,10 @@ snapshots:
       picomatch: 4.0.3
 
   undici-types@7.16.0: {}
+
+  undici@7.16.0: {}
+
+  universalify@2.0.1: {}
 
   update-browserslist-db@1.1.4(browserslist@4.27.0):
     dependencies:
