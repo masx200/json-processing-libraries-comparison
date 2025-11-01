@@ -180,8 +180,7 @@ class BlogApp {
       excerptElement.textContent = metadata.excerpt;
     }
 
-    // 添加加载完成的动画效果
-    card.classList.add("fade-in");
+    // 卡片内容已加载完成，无需动画效果
   }
 
   // 跳转到文章页面
@@ -471,25 +470,9 @@ class BlogApp {
       } else {
         backToTopBtn.classList.add("hidden");
       }
-
-      // 添加滚动时的动画效果
-      const cards = document.querySelectorAll(".article-card");
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          card.style.opacity = "1";
-          card.style.transform = "translateY(0)";
-        }
-      });
     });
 
-    // 初始化卡片动画
-    const cards = document.querySelectorAll(".article-card");
-    cards.forEach((card, index) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(20px)";
-      card.style.transition = `all 0.5s ease ${index * 0.1}s`;
-    });
+    // 文章卡片始终显示，无需动画效果
   }
 }
 
@@ -501,12 +484,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.blogApp = blogApp;
 });
 
-// 页面加载完成后触发文章卡片动画
-window.addEventListener("load", () => {
-  const cards = document.querySelectorAll(".article-card");
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.add("fade-in");
-    }, index * 100);
-  });
-});
+// 页面加载完成后无需动画效果，文章卡片已直接显示
