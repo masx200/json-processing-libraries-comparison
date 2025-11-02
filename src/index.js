@@ -1,12 +1,16 @@
 // 动态加载HTML文件列表 - 使用 import.meta.glob 自动扫描
-const htmlFileModules =Object.fromEntries( Object.entries(
-  import.meta.glob("../*.html", {
-    query: "?url",
-    import: "default",
-  })
-).filter( ([path, loader]) => {
-  return !path.endsWith("index.html");
-}));
+const htmlFileModules = Object.fromEntries(
+  Object.entries(
+    import.meta.glob("../*.html", {
+      query: "?url",
+      import: "default",
+    }),
+  )
+    .filter(([path, loader]) => {
+      return !path.endsWith("index.html");
+    })
+    .map((a) => [import.meta.resolve(a[0]), a[1]]),
+);
 // console.log(htmlFileModules)
 // 博客应用主逻辑
 class BlogApp {
@@ -36,7 +40,7 @@ class BlogApp {
         // 从路径提取文件名
         const filename = path.split("/").pop();
         return { filename, url };
-      })
+      }),
     );
 
     this.articles = fileEntries.map((entry, index) => ({
@@ -319,7 +323,7 @@ class BlogApp {
                         <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
                             ${tag}
                         </span>
-                    `
+                    `,
                       )
                       .join("")}
                 </div>
@@ -361,7 +365,7 @@ class BlogApp {
                         .length
                 })</span>
             </button>
-        `
+        `,
       )
       .join("");
 
@@ -388,7 +392,7 @@ class BlogApp {
       this.filteredArticles = [...this.articles];
     } else {
       this.filteredArticles = this.articles.filter(
-        (article) => article.category === category
+        (article) => article.category === category,
       );
     }
     this.currentFilter = category;
@@ -405,7 +409,7 @@ class BlogApp {
         (article) =>
           article.title.toLowerCase().includes(term) ||
           article.excerpt.toLowerCase().includes(term) ||
-          article.tags.some((tag) => tag.toLowerCase().includes(term))
+          article.tags.some((tag) => tag.toLowerCase().includes(term)),
       );
     }
     this.renderFilteredArticles();
