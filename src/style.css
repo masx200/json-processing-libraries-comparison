@@ -43,7 +43,7 @@
     display: none;
   }
   .nav-active {
-    @apply bg-primary-50  border-l-4;
+    @apply bg-primary-50 border-l-4;
     border-color: black;
 
     color: black;
@@ -51,7 +51,8 @@
 }
 
 .nav-card {
-  @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer;
+  @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow
+    duration-300 cursor-pointer;
 }
 
 .nav-icon {
@@ -76,13 +77,16 @@
 }
 
 .form-input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none
+    focus:ring-2 focus:ring-blue-500;
 }
 
 .form-button {
-  @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors;
+  @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600
+    transition-colors;
 }
 
 .form-button-secondary {
-  @apply px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors ml-2;
+  @apply px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400
+    transition-colors ml-2;
 }
