@@ -4,12 +4,12 @@ const htmlFileModules = Object.fromEntries(
     import.meta.glob("../*.html", {
       query: "?url",
       import: "default",
-    }),
+    })
   )
     .filter(([path, loader]) => {
       return !path.endsWith("index.html");
     })
-    .map((a) => [import.meta.resolve(a[0]), a[1]]),
+    .map((a) => [import.meta.resolve(a[0]), a[1]])
 );
 // console.log(htmlFileModules)
 // 博客应用主逻辑
@@ -39,11 +39,17 @@ class BlogApp {
         const url = await loader();
         // 从路径提取文件名
         const filename = path.split("/").pop();
-        return { filename, url };
-      }),
+        return {
+          filename,
+          url,
+
+          navigatelink: filename,
+        };
+      })
     );
 
     this.articles = fileEntries.map((entry, index) => ({
+      navigatelink: entry.navigatelink,
       id: index + 1,
       title: this.generateTitleFromFilename(entry.filename),
       filename: entry.filename,
@@ -289,7 +295,7 @@ class BlogApp {
 
     // 为整个卡片添加点击跳转事件
     card.addEventListener("click", () => {
-      this.navigateToArticle(article.url);
+      this.navigateToArticle(article.navigatelink);
     });
 
     card.innerHTML = `
@@ -323,7 +329,7 @@ class BlogApp {
                         <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
                             ${tag}
                         </span>
-                    `,
+                    `
                       )
                       .join("")}
                 </div>
@@ -365,7 +371,7 @@ class BlogApp {
                         .length
                 })</span>
             </button>
-        `,
+        `
       )
       .join("");
 
@@ -392,7 +398,7 @@ class BlogApp {
       this.filteredArticles = [...this.articles];
     } else {
       this.filteredArticles = this.articles.filter(
-        (article) => article.category === category,
+        (article) => article.category === category
       );
     }
     this.currentFilter = category;
@@ -409,7 +415,7 @@ class BlogApp {
         (article) =>
           article.title.toLowerCase().includes(term) ||
           article.excerpt.toLowerCase().includes(term) ||
-          article.tags.some((tag) => tag.toLowerCase().includes(term)),
+          article.tags.some((tag) => tag.toLowerCase().includes(term))
       );
     }
     this.renderFilteredArticles();
