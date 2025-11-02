@@ -4,8 +4,8 @@ import { FileCache } from "@masx200/vite-plugin-virtual-http-resolve";
 import remoteToLocal from "@masx200/vite-plugin-virtual-http-resolve";
 import { fetch } from "undici";
 import { resolve } from "path";
-import { readdirSync, statSync, readFileSync } from "fs";
-
+import { readdirSync, statSync } from "fs";
+import htmlMinifier from "rollup-plugin-html-minifier";
 // 动态获取当前目录下所有HTML文件
 function getHtmlFiles() {
   const currentDir = __dirname;
@@ -52,6 +52,15 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "assets",
     rollupOptions: {
+      plugins: [
+        htmlMinifier({
+          options: {
+            collapseWhitespace: true,
+            removeComments: true,
+            removeAttributeQuotes: true,
+          },
+        }),
+      ],
       input: getHtmlFiles(),
       output: {
         // 生成的文件名格式
