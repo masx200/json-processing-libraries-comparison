@@ -4,10 +4,10 @@ const htmlFileModules =Object.fromEntries( Object.entries(
     query: "?url",
     import: "default",
   })
-).filter(async ([path, loader]) => {
+).filter( ([path, loader]) => {
   return !path.endsWith("index.html");
 }));
-console.log(htmlFileModules)
+// console.log(htmlFileModules)
 // 博客应用主逻辑
 class BlogApp {
   constructor() {
