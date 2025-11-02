@@ -65,7 +65,7 @@ class BlogApp {
 
   // 从文件名生成标题
   generateTitleFromFilename(filename) {
-    return filename.replace(".html", "");
+    return decodeURIComponent( filename.replace(".html", ""));
   }
 
   // 从文件名生成分类
@@ -244,13 +244,13 @@ class BlogApp {
     }
 
     // 联系表单提交
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-      contactForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        this.handleFormSubmit(contactForm);
-      });
-    }
+    // const contactForm = document.getElementById("contactForm");
+    // if (contactForm) {
+    //   contactForm.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     this.handleFormSubmit(contactForm);
+    //   });
+    // }
 
     // 平滑滚动
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -445,24 +445,24 @@ class BlogApp {
   }
 
   // 处理表单提交
-  handleFormSubmit(form) {
-    // 获取表单数据
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get("name") || document.getElementById("name").value,
-      email: formData.get("email") || document.getElementById("email").value,
-      subject:
-        formData.get("subject") || document.getElementById("subject").value,
-      message:
-        formData.get("message") || document.getElementById("message").value,
-    };
+  // handleFormSubmit(form) {
+  //   // 获取表单数据
+  //   const formData = new FormData(form);
+  //   const data = {
+  //     name: formData.get("name") || document.getElementById("name").value,
+  //     email: formData.get("email") || document.getElementById("email").value,
+  //     subject:
+  //       formData.get("subject") || document.getElementById("subject").value,
+  //     message:
+  //       formData.get("message") || document.getElementById("message").value,
+  //   };
 
-    // 显示成功消息
-    this.showNotification("消息已发送！我会尽快回复您。", "success");
+  //   // 显示成功消息
+  //   this.showNotification("消息已发送！我会尽快回复您。", "success");
 
-    // 重置表单
-    form.reset();
-  }
+  //   // 重置表单
+  //   form.reset();
+  // }
 
   // 显示通知
   showNotification(message, type = "info") {
