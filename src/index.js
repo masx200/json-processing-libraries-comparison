@@ -1,3 +1,13 @@
+// 动态加载HTML文件列表 - 使用 import.meta.glob 自动扫描
+const htmlFileModules =Object.fromEntries( Object.entries(
+  import.meta.glob("../*.html", {
+    query: "?url",
+    import: "default",
+  })
+).filter(async ([path, loader]) => {
+  return !path.endsWith("index.html");
+}));
+console.log(htmlFileModules)
 // 博客应用主逻辑
 class BlogApp {
   constructor() {
@@ -19,21 +29,27 @@ class BlogApp {
 
   // 加载HTML文件作为文章
   async loadArticles() {
-    const htmlFiles = [
-      "JSON处理库深度对比研究报告.html",
-      "上下文压缩与编程智能体稳定性研究.html",
-    ];
+    // 使用 import.meta.glob 动态获取所有 HTML 文件
+    const fileEntries = await Promise.all(
+      Object.entries(htmlFileModules).map(async ([path, loader]) => {
+        const url = await loader();
+        // 从路径提取文件名
+        const filename = path.split("/").pop();
+        return { filename, url };
+      })
+    );
 
-    this.articles = htmlFiles.map((filename, index) => ({
+    this.articles = fileEntries.map((entry, index) => ({
       id: index + 1,
-      title: this.generateTitleFromFilename(filename),
-      filename: filename,
+      title: this.generateTitleFromFilename(entry.filename),
+      filename: entry.filename,
+      url: entry.url,
       excerpt: "",
-      category: this.generateCategoryFromFilename(filename),
+      category: this.generateCategoryFromFilename(entry.filename),
       date: this.generateDate(),
       readTime: this.generateReadTime(),
       author: "技术博主",
-      tags: this.generateTagsFromFilename(filename),
+      tags: this.generateTagsFromFilename(entry.filename),
     }));
   }
 
@@ -75,7 +91,7 @@ class BlogApp {
   async loadArticleMetadata() {
     for (let article of this.articles) {
       try {
-        const response = await fetch(article.filename);
+        const response = await fetch(article.url);
         if (response.ok) {
           const html = await response.text();
           const metadata = this.extractMetadata(html, article.filename);
@@ -86,7 +102,7 @@ class BlogApp {
           this.updateArticleCard(article.id, metadata);
         }
       } catch (error) {
-        console.warn(`无法加载文件 ${article.filename}:`, error);
+        console.warn(`无法加载文件 ${article.url}:`, error);
       }
     }
   }
@@ -184,9 +200,9 @@ class BlogApp {
   }
 
   // 跳转到文章页面
-  navigateToArticle(filename) {
+  navigateToArticle(url) {
     // 在新标签页中打开文章
-    window.open(filename, "_blank");
+    window.open(url, "_blank");
   }
 
   // 设置事件监听器
@@ -269,7 +285,7 @@ class BlogApp {
 
     // 为整个卡片添加点击跳转事件
     card.addEventListener("click", () => {
-      this.navigateToArticle(article.filename);
+      this.navigateToArticle(article.url);
     });
 
     card.innerHTML = `
@@ -303,12 +319,12 @@ class BlogApp {
                         <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
                             ${tag}
                         </span>
-                    `,
+                    `
                       )
                       .join("")}
                 </div>
                 <div class="mt-4">
-                    <a href="${article.filename}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm" onclick="event.stopPropagation()">
+                    <a href="${article.url}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm" onclick="event.stopPropagation()">
                         阅读全文 <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -345,7 +361,7 @@ class BlogApp {
                         .length
                 })</span>
             </button>
-        `,
+        `
       )
       .join("");
 
@@ -372,7 +388,7 @@ class BlogApp {
       this.filteredArticles = [...this.articles];
     } else {
       this.filteredArticles = this.articles.filter(
-        (article) => article.category === category,
+        (article) => article.category === category
       );
     }
     this.currentFilter = category;
@@ -389,7 +405,7 @@ class BlogApp {
         (article) =>
           article.title.toLowerCase().includes(term) ||
           article.excerpt.toLowerCase().includes(term) ||
-          article.tags.some((tag) => tag.toLowerCase().includes(term)),
+          article.tags.some((tag) => tag.toLowerCase().includes(term))
       );
     }
     this.renderFilteredArticles();
