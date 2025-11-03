@@ -1,3 +1,8 @@
+import "prismjs/prism";
+import "prismjs/components/prism-bash";
+
+
+Prism.highlightAll();
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {

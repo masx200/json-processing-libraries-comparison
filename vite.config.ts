@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+//@ts-ignore
 import tailwindcss from "@tailwindcss/vite"; // 引入 Vite 插件
 import { FileCache } from "@masx200/vite-plugin-virtual-http-resolve";
 import remoteToLocal from "@masx200/vite-plugin-virtual-http-resolve";
@@ -96,6 +97,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "chart.js/auto": "virtual:https://esm.sh/chart.js/auto/auto.js",
+      "prismjs/prism":
+        "virtual:https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js",
+      "prismjs/components/prism-bash":
+        "virtual:https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js",
     },
   },
 });
