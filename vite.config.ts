@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { prismjsPlugin } from "vite-plugin-prismjs"; 
 //@ts-ignore
 import tailwindcss from "@tailwindcss/vite"; // 引入 Vite 插件
 import { FileCache } from "@masx200/vite-plugin-virtual-http-resolve";
@@ -46,6 +47,16 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
+    prismjsPlugin({
+      // 配置需要高亮的语言，'all' 表示支持所有语言，也可按需传入数组，如 ['javascript', 'html', 'css']
+      languages: "all", // [1,5](@ref)
+      // 配置插件功能，例如显示行号和复制按钮
+      plugins: ["line-numbers", "copy-to-clipboard"], // [1,3](@ref)
+      // 选择主题，可选 'okaidia', 'coy', 'solarizedlight' 等
+      theme: "okaidia", // [1,3](@ref)
+      // 确保加载CSS
+      css: true, // [1,4](@ref)
+    }),
   ],
 
   // 多入口页面配置
@@ -97,10 +108,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "chart.js/auto": "virtual:https://esm.sh/chart.js/auto/auto.js",
-      "prismjs/prism":
-        "virtual:https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js",
-      "prismjs/components/prism-bash":
-        "virtual:https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js",
     },
   },
 });

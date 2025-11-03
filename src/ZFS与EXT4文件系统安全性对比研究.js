@@ -1,7 +1,10 @@
-import "prismjs/prism";
-import "prismjs/components/prism-bash";
+//@ts-ignore
 
 
+
+import Prism from "prismjs";
+// import loadLanguages from "prismjs/components/index.js" ;
+// loadLanguages(["bash"]);
 Prism.highlightAll();
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
