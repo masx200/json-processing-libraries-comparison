@@ -39,7 +39,7 @@ code in this repository.
 
 ### 2. 研究报告页面
 
-- **JSON处理库深度对比研究报告.html**: stream-json vs large-json-reader-writor
+- **JSON处理库深度对比研究报告.html**: stream-json vs large-json-reader-writer
 - **上下文压缩与编程智能体稳定性研究.html**: KiloCode vs Claude Code
 
 ### 3. 核心功能

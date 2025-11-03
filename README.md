@@ -17,7 +17,7 @@
 
 ### 研究报告页面
 
-- 📈 JSON处理库深度对比研究报告：stream-json vs large-json-reader-writor
+- 📈 JSON处理库深度对比研究报告：stream-json vs large-json-reader-writer
 - 🤖 上下文压缩与编程智能体稳定性研究：KiloCode vs Claude Code
 - 📊 交互式图表和数据可视化
 - 🎯 详细的技术对比分析和适用场景建议
@@ -55,7 +55,7 @@
 
 ## JSON处理库对比分析平台
 
-这是一个关于JSON处理库深度对比的研究报告前端项目，使用Vite构建，主要对比分析stream-json和large-json-reader-writor两个库的性能、特性、适用场景等。
+这是一个关于JSON处理库深度对比的研究报告前端项目，使用Vite构建，主要对比分析stream-json和large-json-reader-writer两个库的性能、特性、适用场景等。
 
 ## 项目特点
 

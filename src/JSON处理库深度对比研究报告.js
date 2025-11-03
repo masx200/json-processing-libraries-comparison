@@ -106,7 +106,7 @@ window.addEventListener("load", async () => {
           pointHoverBorderColor: "rgba(59, 130, 246, 1)",
         },
         {
-          label: "large-json-reader-writor",
+          label: "large-json-reader-writer",
           data: [10, 5, 20, 30, 15],
           backgroundColor: "rgba(168, 85, 247, 0.2)",
           borderColor: "rgba(168, 85, 247, 1)",
