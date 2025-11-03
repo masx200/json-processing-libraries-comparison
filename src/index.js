@@ -2,7 +2,7 @@
 const htmlFileModules = Object.fromEntries(
   Object.entries(
     import.meta.glob("../*.html", {
-      query: "?url",
+      query: "?raw",
       import: "default",
     }),
   )
@@ -36,7 +36,10 @@ class BlogApp {
     // 使用 import.meta.glob 动态获取所有 HTML 文件
     const fileEntries = await Promise.all(
       Object.entries(htmlFileModules).map(async ([path, loader]) => {
-        const url = await loader();
+        const urltext = await loader();
+
+        const blob = new Blob([urltext], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
         // 从路径提取文件名
         const filename = path.split("/").pop();
         return {
@@ -100,6 +103,7 @@ class BlogApp {
   // 加载文章元数据（标题和摘要）
   async loadArticleMetadata() {
     for (let article of this.articles) {
+      const url = article.url;
       try {
         const response = await fetch(article.url);
         if (response.ok) {
@@ -113,6 +117,8 @@ class BlogApp {
         }
       } catch (error) {
         console.warn(`无法加载文件 ${article.url}:`, error);
+      }finally{
+        URL.revokeObjectURL(url);
       }
     }
   }
