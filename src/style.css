@@ -90,3 +90,47 @@
   @apply px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400
     transition-colors ml-2;
 }
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .section-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
