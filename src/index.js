@@ -337,12 +337,12 @@ class BlogApp {
                         <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
                             ${tag}
                         </span>
-                    `,
+                    `
                       )
                       .join("")}
                 </div>
                 <div class="mt-4">
-                    <a href="${article.url}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm" onclick="event.stopPropagation()">
+                    <a href="${article.navigatelink}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm" onclick="event.stopPropagation()">
                         阅读全文 <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
