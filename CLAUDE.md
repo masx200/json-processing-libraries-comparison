@@ -169,3 +169,12 @@ pnpm preview
 3. 避免修改DOM结构的核心类名和ID，确保JavaScript功能正常
 4. 新增文章时注意文件名编码，使用UTF-8格式
 5. 图片资源使用Picsum API，确保可访问性
+
+# 给文档添加摘要的方法:
+
+```html
+<meta
+  name="description"
+  content="深入对比分析stream-json和large-json-reader-writer两个主流JSON处理库的性能、内存管理、API设计和社区支持等特性，为技术选型提供科学依据。包含详细的性能测试数据、技术特性对比表和适用场景分析。"
+/>
+```

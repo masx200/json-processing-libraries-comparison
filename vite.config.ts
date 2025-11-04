@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import { prismjsPlugin } from "vite-plugin-prismjs"; 
+import { prismjsPlugin } from "vite-plugin-prismjs";
 //@ts-ignore
 import tailwindcss from "@tailwindcss/vite"; // 引入 Vite 插件
 import { FileCache } from "@masx200/vite-plugin-virtual-http-resolve";

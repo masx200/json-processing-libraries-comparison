@@ -1,7 +1,5 @@
 //@ts-ignore
 
-
-
 import Prism from "prismjs";
 // import loadLanguages from "prismjs/components/index.js" ;
 // loadLanguages(["bash"]);
