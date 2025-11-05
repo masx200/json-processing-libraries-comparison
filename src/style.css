@@ -247,7 +247,8 @@
   }
 
   .toc-item {
-    @apply py-1 px-2 rounded hover:bg-notion-gray cursor-pointer transition-colors duration-100;
+    @apply py-1 px-2 rounded hover:bg-notion-gray cursor-pointer
+      transition-colors duration-100;
   }
 
   .toc-item.active {
@@ -269,5 +270,6 @@
 }
 
 .toc-item {
-  @apply py-1 px-2 rounded hover:bg-light cursor-pointer transition-colors duration-100;
+  @apply py-1 px-2 rounded hover:bg-light cursor-pointer transition-colors
+    duration-100;
 }
