@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { prismjsPlugin } from "vite-plugin-prismjs";
+import { VitePWA } from "vite-plugin-pwa";
 //@ts-ignore
 import tailwindcss from "@tailwindcss/vite"; // 引入 Vite 插件
 import { FileCache } from "@masx200/vite-plugin-virtual-http-resolve";
@@ -31,6 +32,45 @@ function getHtmlFiles() {
 
 export default defineConfig({
   plugins: [
+    VitePWA({
+      registerType: "autoUpdate", // 可选 prompt / autoUpdate
+      injectRegister: "auto", // 自动注入注册脚本
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,json}"], // 缓存规则
+        runtimeCaching: [
+          // 网络优先的 API 缓存示例
+          {
+            urlPattern: /^https:\/\/api\.example\.com\/.*/i,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "api-cache",
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 },
+            },
+          },
+        ],
+      },
+      manifest: {
+        name: "My Vite PWA",
+        short_name: "VitePWA",
+        description: "Vite + PWA demo",
+        theme_color: "#ffffff",
+        background_color: "#ffffff",
+        display: "standalone",
+        start_url: "/",
+        icons: [
+          {
+            src: "pwa-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "pwa-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+    }),
     remoteToLocal({
       cache: new FileCache(),
       async fetcher(url: string) {
